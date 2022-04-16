@@ -1,16 +1,53 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from "react-dom";
+//import * as ReactDOMClient from 'react-dom/client';
 import './index.css';
-import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import { Navigation,Home,Footer,Contact,Portrait,
+         Browser,
+         Download, Resources, Resource} from "./components/component_export";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <Router>
+        <Navigation/>
+        <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/browser" element={<Browser />} />
+            <Route path="/portrait" element={<Portrait />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/download" element={<Download />}>
+                <Route path="" element={<Resources />} />
+                <Route path=":postSlug" element={<Resource />} />
+            </Route>
+        </Routes>
+        <Footer />
+    </Router>,
+    document.getElementById("root")
 );
+
+
+/*const container = document.getElementById('root');
+const root = ReactDOMClient.createRoot(container);
+root.render(
+    <Router>
+        <Navigation/>
+        <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/browser" element={<Browser />} />
+            <Route path="/portrait" element={<Portrait />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/download" element={<Download />}>
+                <Route path="" element={<Resources />} />
+                <Route path=":postSlug" element={<Resource />} />
+            </Route>
+        </Routes>
+        <Footer />
+    </Router>
+)*/
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

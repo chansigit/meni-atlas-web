@@ -1,0 +1,9 @@
+export { default as Navigation } from "./Navigation";
+export { default as Footer } from "./Footer";
+export { default as Home } from "./Home";
+export { default as Portrait } from "./Portrait";
+export { default as Contact } from "./Contact";
+export { default as Browser } from "./Browser";
+export { default as Download } from "./download_resources/Download";
+export { default as Resource } from "./download_resources/Resource";
+export { default as Resources } from "./download_resources/Resources";

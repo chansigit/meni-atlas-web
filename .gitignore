@@ -5,6 +5,10 @@
 /.pnp
 .pnp.js
 
+# datahub
+/public/vitessce_hub/*
+/public/vitessce_hub/meniscal_chondrocyte.zarr/*
+
 # testing
 /coverage
 
