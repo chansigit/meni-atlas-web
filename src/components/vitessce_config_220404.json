@@ -1,0 +1,84 @@
+{
+  "version": "1.0.4",
+  "name": "",
+  "description": "meniscus",
+  "public": true,
+  "datasets": [
+    {
+      "uid": "uid1",
+      "name": "name1",
+      "files": [
+          {
+            "type": "cells",
+            "fileType": "cells.json",
+            "url": "http://localhost:9000/meniscal_chondrocyte.cells.json"
+
+          },
+
+          {
+            "type": "cell-sets",
+            "fileType":"cell-sets.json",
+            "url": "http://localhost:9000/meniscal_chondrocyte.cell-sets.json"
+          },
+
+          {
+            "url":"http://localhost:9000/meniscal_chondrocyte.zarr",
+            "type": "expression-matrix",
+            "fileType": "anndata-expression-matrix.zarr",
+            "options": {
+              "matrix": "X"
+            }
+          }
+
+
+
+
+      ]
+    }
+  ],
+  "initStrategy": "auto",
+  "coordinationSpace": {
+    "embeddingType": {
+      "EmbeddingType1": "UMAP",
+      "EmbeddingType2": "PCA"
+    }
+  },
+
+  "layout": [
+    {
+      "component": "scatterplot",
+      "coordinationScopes": {
+        "embeddingType": "EmbeddingType1"
+      },
+      "w": 4, "h": 4, "x": 0, "y": 0
+    },
+    {
+      "component": "scatterplot",
+      "coordinationScopes": {
+        "embeddingType": "EmbeddingType2"
+      },
+      "w": 4, "h": 4, "x": 4, "y": 0
+    },
+    {
+      "component": "genes",
+      "x": 8,
+      "y": 0,
+      "w": 4,
+      "h": 2
+    },
+    {
+      "component": "cellSets",
+      "x": 8,
+      "y": 2,
+      "w": 4,
+      "h": 2
+    },
+    {
+      "component": "cellSetExpression",
+      "x": 0,
+      "y": 4,
+      "w": 5,
+      "h": 3
+    }
+  ]
+}
