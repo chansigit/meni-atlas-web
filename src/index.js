@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { Navigation,Home,Footer,Contact,Portrait,
-         Browser,
+         Browser, Regulon,
          Download, Resources, Resource} from "./components/component_export";
 
 ReactDOM.render(
@@ -18,6 +18,7 @@ ReactDOM.render(
             <Route path="/" element={<Home />} />
             <Route path="/browser" element={<Browser />} />
             <Route path="/portrait" element={<Portrait />} />
+            <Route path="/regulon" element={<Regulon />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/download" element={<Download />}>
                 <Route path="" element={<Resources />} />

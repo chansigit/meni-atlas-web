@@ -31,8 +31,10 @@ function Navigation() {
                                     Cell type portrait
                                 </NavLink>
                             </li>
-                            <li className="nav-item">
-                                <a  className="nav-link" href="http://www.w3school.com.cn">Regulons</a>
+                            <li className="nav-item" >
+                                <NavLink className="nav-link" to="/regulon">
+                                    Regulon
+                                </NavLink>
                             </li>
                             <li className="nav-item">
                                 <NavLink className="nav-link" to="/download">
