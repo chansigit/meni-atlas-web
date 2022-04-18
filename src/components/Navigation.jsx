@@ -29,13 +29,13 @@ function Navigation() {
                                     Cell type portrait
                                 </NavLink>
                             </li>
-                            <li className="nav-item" >
+                            {/*<li className="nav-item" >
                                 <NavLink className="nav-link" to="/regulon">
                                     Regulon
                                 </NavLink>
-                            </li>
+                            </li>*/}
                             <li className="nav-item">
-                                <NavLink className="nav-link" to="/download">
+                                <NavLink className="nav-link" to="/download2">
                                     Resources
                                 </NavLink>
                             </li>

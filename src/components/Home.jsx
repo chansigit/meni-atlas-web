@@ -26,7 +26,6 @@ export default function Home(){
                             participated in degeneration.
                         </p>
                     </div>
-
                 </div>
 
 
