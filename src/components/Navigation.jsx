@@ -43,9 +43,7 @@ function Navigation() {
                                 <a  className="nav-link" href="#">Manuscript</a>
                             </li>
                             <li className="nav-item">
-                                <NavLink className="nav-link">
-                                    <a href="mailto:chensj16@mails.tsinghua.edu.cn">Contact</a>
-                                </NavLink>
+                                <a className="nav-link" href="mailto:chensj16@mails.tsinghua.edu.cn">Contact</a>
                             </li>
 
                         </ul>
