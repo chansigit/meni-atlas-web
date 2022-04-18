@@ -71,7 +71,7 @@ function IFrameContent({value}) {
         return (
             <div style={{height: "768"}}>
                 <h5>Displaying chondrocytes and pericyte-like cells</h5>
-                <iframe seamless src="http://bioinfo.sjchen.top:8080/view/200608-ABM2-totalclustered-211006clcean.h5ad/"  width="1366" height="768"></iframe>
+                <iframe seamless src="http://meni.singlecell.info:5005/view/meniscal_chondrocyte.h5ad/"  width="1366" height="768"></iframe>
                 <CellxgeneHelp />
             </div>
 
@@ -80,7 +80,7 @@ function IFrameContent({value}) {
         return (
             <div style={{height: "768"}}>
                 <h5>Displaying endothelial cells</h5>
-                <iframe seamless src="http://localhost:9002"  width="1366" height="768"></iframe>
+                <iframe seamless src="http://meni.singlecell.info:5005/view/meniscal_endo.h5ad/"  width="1366" height="768"></iframe>
                 <CellxgeneHelp />
             </div>
         )
@@ -88,7 +88,7 @@ function IFrameContent({value}) {
         return (
             <div style={{height: "768"}}>
                 <h5>Displaying immune cells</h5>
-                <iframe seamless src="http://localhost:9003"  width="1366" height="768"></iframe>
+                <iframe seamless src="http://meni.singlecell.info:5005/view/meniscal_immune.h5ad/"  width="1366" height="768"></iframe>
                 <CellxgeneHelp />
             </div>
         )
@@ -96,7 +96,7 @@ function IFrameContent({value}) {
         return (
             <div style={{height: "768"}}>
                 <h5>Displaying chondrocytes and pericyte-like cells</h5>
-                <iframe seamless src="http://localhost:9001"  width="1366" height="768"></iframe>
+                <iframe seamless src="http://meni.singlecell.info:5005/view/meniscal_chondrocyte.h5ad/"  width="1366" height="768"></iframe>
                 <CellxgeneHelp />
             </div>
         )
