@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { Navigation,Home,Footer,Contact,Portrait,
-         Browser, Regulon,
+         Browser, Regulon, Download2,
          Download, Resources, Resource} from "./components/component_export";
 
 ReactDOM.render(
@@ -20,10 +20,12 @@ ReactDOM.render(
             <Route path="/portrait" element={<Portrait />} />
             <Route path="/regulon" element={<Regulon />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/download" element={<Download />}>
+            <Route path="/download2" element={<Download2 />} />
+{/*
                 <Route path="" element={<Resources />} />
                 <Route path=":postSlug" element={<Resource />} />
             </Route>
+*/}
         </Routes>
         <Footer />
     </Router>,
