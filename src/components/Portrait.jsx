@@ -1,6 +1,6 @@
 import React, {useEffect, useState, useMemo, Fragment} from 'react';
 import { useTable, useSortBy, useFilters, usePagination } from 'react-table';
-import { Table, Row, Col, Button, Input } from "reactstrap"
+import { Table, Row, Col, Button, Input, Alert, List} from "reactstrap"
 import {Container} from 'reactstrap'
 import {Filter, DefaultColumnFilter} from './portrait_filter'
 import "bootstrap/dist/css/bootstrap.min.css"
@@ -149,98 +149,182 @@ const TableContainer = ({ columns, data }) => {
 export default function Portrait(){
     // fetch data back from url
     //// useEffect is a tool to perform side-effect inside a function
-    const [data, setData] = useState([])
+    const [data_deg, setData_deg] = useState([])
     useEffect(() => {
         const doFetch = async () => {
-            const response = await fetch("https://randomuser.me/api/?results=100")
+            const response = await fetch("http://localhost:9000/ch_pcl_markers.json")
             const body = await response.json()
-            const contacts = body.results
-            //console.log(contacts)
-            setData(contacts)
+            const DEGs = body.results
+            console.log(DEGs)
+            setData_deg(DEGs)
+        }
+        doFetch()
+    }, [])
+
+    const [data_enrich, setData_enrich] = useState([])
+    useEffect(() => {
+        const doFetch = async () => {
+            const response = await fetch("http://localhost:9000/ch_pcl_enrich.json")
+            const body = await response.json()
+            const enriched = body.results
+            console.log(enriched)
+            setData_enrich(enriched)
         }
         doFetch()
     }, [])
 
     // define table columns
     //// useMemo is another side-effect tool, which stores function evaluation results
-    const columns = useMemo(
+    const columns_DEG = useMemo(
         () => [
             {
-                Header: "Title",
-                accessor: "name.title",
+                Header: "Gene",
+                accessor: "gene",
                 disableSortBy: true
             },
             {
-                Header: "First Name",
-                accessor: "name.first",
+                Header: "Cell type",
+                accessor: "cluster"
             },
             {
-                Header: "Last Name",
-                accessor: "name.last",
+                Header: "average log2FC",
+                accessor: "avg_log2FC",
             },
             {
-                Header: "Email",
-                accessor: "email",
+                Header: "Percent in 1",
+                accessor: "pct1",
             },
             {
-                Header: "City",
-                accessor: "location.city",
+                Header: "Percent in 2",
+                accessor: "pct2",
             },
             {
-                Header : "Hemisphere",
-                disableFilters: true,
-                accessor: (values) => {
-                    const { latitude, longitude } = values.location.coordinates;
-                    const first = Number(latitude) > 0 ? 'N' : 'S';
-                    const second = Number(longitude) > 0 ? 'E' : 'W';
-                    return first + '/' + second;
-                },
-
-                // we can also write code below as a separate React Component
-                Cell: ({ cell }) => {
-                    const { value } = cell;
-                    const pickEmoji = (value) => {
-                        let first = value[0]; // N or S
-                        let second = value[2]; // E or W
-                        const options = ['⇖', '⇗', '⇙', '⇘'];
-                        let num = first === 'N' ? 0 : 2;
-                        num = second === 'E' ? num + 1 : num;
-                        return options[num];
-                    };
-                    return (
-                        <div style={{ textAlign: 'center', fontSize: 18 }}>
-                            {pickEmoji(value)}
-                        </div>
-                    );
-                }
+                Header: "Percent difference",
+                accessor: "pct_diff",
+            },
+            {
+                Header: "Adjusted P value",
+                accessor: "p_val_adj",
+            },
+            {
+                Header: "P value",
+                accessor: "p_val",
             }
+
+        ],
+        []
+    )
+    const columns_enrich = useMemo(
+        () => [
+            {
+                Header: "Gene set ID",
+                accessor: "ID",
+                disableSortBy: false
+            },
+            {
+                Header: "Term type",
+                accessor: "ONTOLOGY",
+                disableSortBy: false
+            },
+            {
+                Header: "Description",
+                accessor: "Description",
+                disableSortBy: true
+            },
+            {
+                Header: "Cell type",
+                accessor: "Cluster",
+            },
+            {
+                Header: "Gene Ratio",
+                accessor: "GeneRatio",
+            },
+            {
+                Header: "Background Ratio",
+                accessor: "BgRatio",
+            },
+            {
+                Header: "P value",
+                accessor: "p_val",
+            },
+            {
+                Header: "Adjusted P value",
+                accessor: "p_val_adj",
+            },
+            {
+                Header: "Enriched Genes",
+                accessor: "geneID",
+            },
+            {
+                Header: "Count",
+                accessor: "Count",
+            }
+
         ],
         []
     )
     return (
-        <Container style={{ marginTop: 100 }}>
-            <h1>sss</h1>
-            <TableContainer columns={columns} data={data} />
-            <h1>sss</h1>
+        <Container style={{ marginTop: 30 }}>
+            <h4>Cell type portraits of meniscal cells</h4>
+            <p>We aim to build a molecular portrait of cells in human meniscus, recording signature expression patterns
+            in different cell states and revealing key biological functions.</p>
+            <hr  style={{ marginBottom: 50 }}/>
+
+            <h4>Cell-type marker genes</h4>
+            <Alert color="primary">
+                <p>The table below displays the differentially expressed genes (DEGs) identified
+                    for each cell type using the "one cell-type v.s. all the others" scheme.</p>
+
+                <List type="unstyled">
+                    <li>
+                        The displayed marker genes covers the following cell types:
+                        <ul>
+                            <li>
+                                Ch.1 : Chondrocyte.1 (CHAD)
+                            </li>
+                            <li>
+                                Ch.2 : Chondrocyte.2 (FNDC1)
+                            </li>
+                            <li>
+                                Ch.3 : Chondrocyte.3 (PRG4)
+                            </li>
+                            <li>
+                                Ch.4 : Chondrocyte.4 (CFD)
+                            </li>
+                            <li>
+                                Ch.5 : Chondrocyte.5 (cycling)
+                            </li>
+                            <li>
+                                PCL.1 : Pericyte-like cells 1
+                            </li>
+                            <li>
+                                PCL.2 : Pericyte-like cells 2
+                            </li>
+                        </ul>
+                    </li>
+                </List>
+
+                <p>Gene symbols, p values, associated cell types, expressing percentages are
+                    listed in the table. The table can be <b>sorted by clicking</b> the column titles.
+                    Records in the table can be <b>filtered by filling the input box</b> below the column titles.
+                </p>
+            </Alert>
+            <TableContainer columns={columns_DEG} data={data_deg} />
+            <hr  style={{ marginBottom: 50 }}/>
+
+            <h4>Enriched gene sets of each cell-type</h4>
+            <Alert color="info">
+                <p>The table below displays the enriched gene sets derived from the
+                    gene over-representation analysis methods.</p>
+
+
+                <p>Enriched term names, p values, corresponding cell types, enriched genes and their ratios are
+                    listed in the table. The table can be <b>sorted by clicking</b> the column titles.
+                    Records in the table can be <b>filtered by filling the input box</b> below the column titles.
+                </p>
+            </Alert>
+            <TableContainer columns={columns_enrich} data={data_enrich} />
+            <hr  style={{ marginBottom: 50 }}/>
         </Container>
     )
 }
-
-/*
-export default function Portrait() {
-    return (
-        <div style={{ padding: "1rem 0" }}>
-            <h2>画像</h2>
-            <h2>画像</h2>
-            <h2>画像</h2>
-            <h2>画像</h2>
-            <div style={{height: "200px", backgroundColor:"red"}}>
-
-            </div>
-
-            <h2>画像</h2>
-            <h2>画像</h2>
-
-        </div>
-    );
-}*/

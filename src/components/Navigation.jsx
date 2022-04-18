@@ -18,9 +18,7 @@ function Navigation() {
                                     Home
                                 </NavLink>
                             </li>
-                            <li className="nav-item">
-                                <a  className="nav-link" href="#">Manuscript</a>
-                            </li>
+
                             <li className="nav-item">
                                 <NavLink className="nav-link" to="/browser">
                                     Cell browser
@@ -40,6 +38,9 @@ function Navigation() {
                                 <NavLink className="nav-link" to="/download">
                                     Resources
                                 </NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <a  className="nav-link" href="#">Manuscript</a>
                             </li>
                             <li className="nav-item">
                                 <NavLink className="nav-link" to="/contact">
