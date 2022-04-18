@@ -164,7 +164,7 @@ export default function Portrait(){
     const [data_enrich, setData_enrich] = useState([])
     useEffect(() => {
         const doFetch = async () => {
-            const response = await fetch("http://meni.singlecell.info:9000/ch_pcl_markers.json")
+            const response = await fetch("http://meni.singlecell.info:9000/ch_pcl_enrich.json")
             const body = await response.json()
             const enriched = body.results
             console.log(enriched)
