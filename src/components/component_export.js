@@ -5,6 +5,7 @@ export { default as Portrait } from "./Portrait";
 export { default as Regulon } from "./Regulon";
 export { default as Contact } from "./Contact";
 export { default as Browser } from "./Browser";
+export { default as Download2 } from "./Download2";
 export { default as Download } from "./download_resources/Download";
 export { default as Resource } from "./download_resources/Resource";
 export { default as Resources } from "./download_resources/Resources";
