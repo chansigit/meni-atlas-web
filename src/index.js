@@ -14,7 +14,7 @@ import { Navigation,Home,Footer,Contact,Portrait,
 ReactDOM.render(
     <Router>
         <Navigation/>
-        <Routes>
+        <Routes id="main-content">
             <Route path="/" element={<Home />} />
             <Route path="/browser" element={<Browser />} />
             <Route path="/portrait" element={<Portrait />} />
